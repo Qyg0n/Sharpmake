@@ -3240,7 +3240,7 @@ namespace Sharpmake
                                 }
 
                                 if (!goesThroughDLL)
-                                {
+                                {ConfigurationDependencies.Add(dependency);
                                     if (dependencySetting.HasFlag(DependencySetting.LibraryPaths))
                                         DependenciesOtherLibraryPaths.AddRange(dependency.LibraryPaths);
 

@@ -863,9 +863,6 @@ namespace Sharpmake
             options["SpecificSimulatorLibraryPaths"] = XCodeUtil.XCodeFormatList(specificSimulatorLibraryPaths, 4);
 
             options["WarningOptions"] = FileGeneratorUtilities.RemoveLineTag;
-
-            options["SupportsMaccatalyst"] = FileGeneratorUtilities.RemoveLineTag;
-            options["SupportsMacDesignedForIphoneIpad"] = FileGeneratorUtilities.RemoveLineTag;
         }
 
         public virtual void SelectPrecompiledHeaderOptions(IGenerationContext context)

@@ -635,18 +635,6 @@ namespace Sharpmake
                     [Default]
                     Disable
                 }
-
-                public enum SupportsMaccatalyst
-                {
-                    Enable,
-                    Disable
-                }
-
-                public enum SupportsMacDesignedForIphoneIpad
-                {
-                    Enable,
-                    Disable
-                }
             }
 
             public static class Linker

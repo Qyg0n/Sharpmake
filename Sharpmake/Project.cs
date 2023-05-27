@@ -826,7 +826,7 @@ namespace Sharpmake
             public Dictionary<Configuration, string> ConfToRegexesHash;
         }
 
-        internal virtual void ResolveSourceFiles(Builder builder)
+        protected virtual void ResolveSourceFiles(Builder builder)
         {
             var sourceFilesIncludeRegex = RegexCache.GetCachedRegexes(SourceFilesIncludeRegex);
             var sourceFilesFiltersRegex = RegexCache.GetCachedRegexes(SourceFilesFiltersRegex);
@@ -2477,7 +2477,7 @@ namespace Sharpmake
                     || outputType == Configuration.OutputType.None);
         }
 
-        internal override void ResolveSourceFiles(Builder builder)
+        protected override void ResolveSourceFiles(Builder builder)
         {
             ResourceFiles.AddRange(PublicResourceFiles);
 

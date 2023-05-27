@@ -1080,7 +1080,7 @@ namespace Sharpmake.Generators.VisualStudio
                 ? context.ProjectConfigurations.Any(c => ConfigurationNeedReferences(c))
                 : ConfigurationNeedReferences(firstConf);
 
-            if (addDependencies)
+            if (addDependencies || context.Project.AllowInconsistentDependencies)
             {
                 var dependencies = new UniqueList<ProjectDependencyInfo>();
                 foreach (var configuration in context.ProjectConfigurations)

@@ -138,11 +138,11 @@ namespace Sharpmake.Generators.VisualStudio
             else if (context.Configuration.Output != Project.Configuration.OutputType.None)
                 context.Options["OutputDirectory"] = optionsContext.OutputDirectoryRelative;
             else
-                context.Options["OutputDirectory"] = FileGeneratorUtilities.RemoveLineTag;
+                context.Options["OutputDirectory"] = context.Configuration.TargetPath;
 
             //IntermediateDirectory
             optionsContext.IntermediateDirectoryRelative = Util.PathGetRelative(context.ProjectDirectory, context.Configuration.IntermediatePath);
-            context.Options["IntermediateDirectory"] = context.Configuration.Output != Project.Configuration.OutputType.None ? optionsContext.IntermediateDirectoryRelative : FileGeneratorUtilities.RemoveLineTag;
+            context.Options["IntermediateDirectory"] = context.Configuration.Output != Project.Configuration.OutputType.None ? optionsContext.IntermediateDirectoryRelative : context.Configuration.TargetPath;
             context.CommandLineOptions["IntermediateDirectory"] = FormatCommandLineOptionPath(context, optionsContext.IntermediateDirectoryRelative);
 
             if (!string.IsNullOrEmpty(context.Configuration.LayoutDir))
