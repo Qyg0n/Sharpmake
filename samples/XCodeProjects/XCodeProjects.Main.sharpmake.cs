@@ -1,16 +1,5 @@
-// Copyright (c) 2022-2023 Ubisoft Entertainment
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// Copyright (c) Ubisoft. All Rights Reserved.
+// Licensed under the Apache 2.0 License. See LICENSE.md in the project root for license information.
 
 using System;
 using System.Collections.Generic;
@@ -23,6 +12,7 @@ using Sharpmake.Generators.FastBuild;
 
 [module: Sharpmake.Include("XCodeProjects.*.sharpmake.cs")]
 [module: Sharpmake.Include("*/*.sharpmake.cs")]
+[module: Sharpmake.Include("extern/*/*.sharpmake.cs")]
 
 namespace XCodeProjects
 {
@@ -56,9 +46,14 @@ namespace XCodeProjects
             get => Path.Combine(RootDirectory, @"..\external");
         }
 
-        public static string IncludesDirectory
+        public static string[] IncludesDirectories
         {
-            get => Path.Combine(RootDirectory, "extern", "includes");
+            get =>
+                new string[]
+                {
+                    Path.Combine(RootDirectory, "extern", "includes"),
+                    Path.Combine(RootDirectory, "intern", "includes"),
+                };
         }
 
         public static string LibrariesDirectory
@@ -89,7 +84,7 @@ namespace XCodeProjects
             // for the purpose of this sample, we'll reuse the FastBuild executables that live in the sharpmake source repo
             string sharpmakeFastBuildDir = Util.PathGetAbsolute(
                 Globals.RootDirectory,
-                @"..\..\..\tools\FastBuild"
+                @"../../tools/FastBuild"
             );
             switch (Util.GetExecutingPlatform())
             {
